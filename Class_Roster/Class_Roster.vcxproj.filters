@@ -18,5 +18,40 @@
     <ClCompile Include="Class_Roster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="networkStudent.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="securityStudent.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="student.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="softwareStudent.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="roster.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="degree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="networkStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="securityStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="softwareStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="roster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
