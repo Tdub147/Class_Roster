@@ -104,12 +104,13 @@ int main()
             break;
         }
     }
-    classRoster.printAll();
 
     cout << "Couse Title: Scripting and Programming - Applications – C867" << endl;
     cout << "Programming Language: C++" << endl;
     cout << "Student ID: 001284276" << endl;
     cout << "Name: Tyler Williams" << endl;
+
+    classRoster.printAll();
 
 }
 
