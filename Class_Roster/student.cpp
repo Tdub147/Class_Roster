@@ -161,7 +161,7 @@ void Student::printDaysInCourse()
 	string s = "Number of Days to Complete Each Course: {";
 	for (int i = 0; i < NUM_CLASSES; i++)
 	{
-		s += numDaysToCompl[i] + ",";
+		s += to_string(numDaysToCompl[i]) + ",";
 	}
 	s.resize(s.size() - 1);
 	s += "}";
@@ -171,7 +171,8 @@ void Student::printDaysInCourse()
 
 void Student::printDegree() 
 {
-	cout << degree;
+	string s = degree == 1 ? "NETWORK" : degree == 2 ? "SECURITY" : degree == 3 ? "SOFTWARE" : "INVALID DEGREE";
+	cout << s;
 }
 
 void Student::printStudent() 

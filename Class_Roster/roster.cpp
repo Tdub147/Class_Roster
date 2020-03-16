@@ -18,7 +18,6 @@ Roster::~Roster()
 void Roster::printAll()
 {
     // Call the student data as *variable
-
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
     {
         int j = i + 1;
@@ -87,19 +86,19 @@ int main()
         case NETWORK:
         {
             NetworkStudent networkStudent{ student };
-            classRoster.add(student);
+            classRoster.add(networkStudent.getStudent());
             break;
         }
         case SECURITY:
         {
             SecurityStudent securityStudent{ student };
-            classRoster.add(student);
+            classRoster.add(securityStudent.getStudent());
             break;
         }
         case SOFTWARE:
         {
             SoftwareStudent softwareStudent{ student };
-            classRoster.add(student);
+            classRoster.add(softwareStudent.getStudent());
             break;
         }
         default:
@@ -110,7 +109,7 @@ int main()
     cout << "Couse Title: Scripting and Programming - Applications – C867" << endl;
     cout << "Programming Language: C++" << endl;
     cout << "Student ID: 001284276" << endl;
-    cout << "Name: Tyler Williams" << endl;
+    cout << "Name: Tyler Williams" << endl << endl;
 
     classRoster.printAll();
 

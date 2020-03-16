@@ -4,7 +4,7 @@ SoftwareStudent::SoftwareStudent()
 {
 	Student _;
 	this->student = _;
-	this->student.setDegree(SECURITY);
+	this->student.setDegree(SOFTWARE);
 }
 
 SoftwareStudent::~SoftwareStudent()
@@ -15,7 +15,7 @@ SoftwareStudent::~SoftwareStudent()
 SoftwareStudent::SoftwareStudent(Student student)
 {
 	this->student = student;
-	this->student.setDegree(SECURITY);
+	this->student.setDegree(SOFTWARE);
 }
 
 Student SoftwareStudent::getStudent() const
