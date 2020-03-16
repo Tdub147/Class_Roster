@@ -1,1 +1,4 @@
-#pragma once
+#ifndef NETWORKSTUDENT_H
+#define NETWORKSTUDENT_H
+
+#endif
