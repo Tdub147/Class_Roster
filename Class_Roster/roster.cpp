@@ -17,6 +17,8 @@ Roster::~Roster()
 
 void Roster::printAll()
 {
+    // Call the student data as *variable
+
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
     {
         int j = i + 1;
