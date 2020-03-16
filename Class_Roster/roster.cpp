@@ -6,31 +6,53 @@ using namespace std;
 
 Roster::Roster()
 {
-    Student _;
-    this->student = _;
-    this->degree = UNKNOWN;
 }
 Roster::~Roster()
 {
-    student.~Student();
-    degree = UNKNOWN;
-}
-Roster::Roster(NetworkStudent networkStudent)
-{
-    student = networkStudent.getStudent();
-    degree = networkStudent.getDegreeProgram();
-}
-Roster::Roster(SecurityStudent securityStudent) 
-{
-    student = securityStudent.getStudent();
-    degree = securityStudent.getDegreeProgram();
-}
-Roster::Roster(SoftwareStudent softwareStudent)
-{
-    student = softwareStudent.getStudent();
-    degree = softwareStudent.getDegreeProgram();
+    //for (int i = 0; i < sizeof(students); i++)
+    //{
+    //    students[i].~Student();
+    //}
 }
 
+void Roster::printAll()
+{
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        int j = i + 1;
+        cout << j << "\t";
+        classRosterArray[i].printStudent();
+    }
+}
+void Roster::printInvalidEmails()
+{
+
+}
+void Roster::printAverageDaysInCourse(string studentID)
+{
+
+}
+void Roster::printByDegreeProgram(Degree degree)
+{
+
+}
+void Roster::add(Student student)
+{
+    int i = 0;
+    while (classRosterArray[i].getStudentID()!="")
+    {
+        i++;
+    }
+    classRosterArray[i] = student;
+}
+void Roster::remove(Student student)
+{
+
+}
+void Roster::remove(string studentID)
+{
+
+}
 
 int main()
 {
@@ -42,7 +64,7 @@ int main()
     "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
     "A5,Tyler,Williams,twi1506@wgu.edu,28,8,30,60,SOFTWARE" };
     const size_t NUM_OF_STUDENTS = sizeof(studentData)/sizeof(studentData[0]);
-    Roster* classRosterArray[NUM_OF_STUDENTS];
+    Roster classRoster;
 
     for (size_t i = 0; i < NUM_OF_STUDENTS; i++)
     {
@@ -56,35 +78,39 @@ int main()
             j++;
         }
         Student student{ studentAtts[0], studentAtts[1], studentAtts[2], studentAtts[3], studentAtts[4], studentAtts[5], studentAtts[6], studentAtts[7] };
+        string s = studentAtts[8];
+        Degree x = degreeMap()[studentAtts[8]];
         switch (degreeMap()[studentAtts[8]])
         {
-        case NETWORKING:
+        case NETWORK:
         {
             NetworkStudent networkStudent{ student };
-            Roster roster{ networkStudent };
-            classRosterArray[i] = &roster;
+            classRoster.add(student);
             break;
         }
         case SECURITY:
         {
             SecurityStudent securityStudent{ student };
-            Roster roster{ securityStudent };
-            classRosterArray[i] = &roster;
+            classRoster.add(student);
             break;
         }
         case SOFTWARE:
         {
             SoftwareStudent softwareStudent{ student };
-            Roster roster{ softwareStudent };
-            classRosterArray[i] = &roster;
+            classRoster.add(student);
             break;
         }
         default:
             break;
         }
     }
+    classRoster.printAll();
 
-    cout << "Hello World!\n";
+    cout << "Couse Title: Scripting and Programming - Applications – C867" << endl;
+    cout << "Programming Language: C++" << endl;
+    cout << "Student ID: 001284276" << endl;
+    cout << "Name: Tyler Williams" << endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

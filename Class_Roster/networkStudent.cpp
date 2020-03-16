@@ -4,22 +4,18 @@ NetworkStudent::NetworkStudent()
 {
 	Student _;
 	this->student = _;
+	student.setDegree(NETWORK);
 }
 
 NetworkStudent::~NetworkStudent()
 {
 	student.~Student();
-	degree = UNKNOWN;
 }
 
 NetworkStudent::NetworkStudent(Student student)
 {
 	this->student = student;
-}
-
-Degree NetworkStudent::getDegreeProgram()
-{
-	return degree;
+	this->student.setDegree(NETWORK);
 }
 
 Student NetworkStudent::getStudent() const
@@ -30,4 +26,5 @@ Student NetworkStudent::getStudent() const
 void NetworkStudent::setStudent(Student student)
 {
 	this->student = student;
+	this->student.setDegree(NETWORK);
 }

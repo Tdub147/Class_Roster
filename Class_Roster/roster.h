@@ -12,18 +12,21 @@ using namespace std;
 #include "networkStudent.h"
 #include "degree.h"
 
-class Roster : public Student
+class Roster
 {
 public:
 	Roster();
 	~Roster();
-	Roster(NetworkStudent networkStudent);
-	Roster(SecurityStudent securityStudent);
-	Roster(SoftwareStudent softwareStudent);
 
+	void printAll();
+	void printInvalidEmails();
+	void printAverageDaysInCourse(string studentID);
+	void printByDegreeProgram(Degree degree);
+	void add(Student student);
+	void remove(Student student);
+	void remove(string studentID);
+	
 private:
-	Student student;
-	Degree degree;
+	Student classRosterArray[5];
 };
-
 #endif

@@ -123,7 +123,7 @@ const int* Student::getNumDaysToCompl() const
 
 Degree Student::getDegreeProgram() const
 {
-	return UNKNOWN;
+	return degree;
 }
 
 void Student::printStudentID()
@@ -156,7 +156,7 @@ void Student::printAge()
 	return;
 }
 
-void Student::printNumDaysToCompl()
+void Student::printDaysInCourse()
 {
 	string s = "Number of Days to Complete Each Course: {";
 	for (int i = 0; i < NUM_CLASSES; i++)
@@ -167,4 +167,23 @@ void Student::printNumDaysToCompl()
 	s += "}";
 	cout << s;
 	return;
+}
+
+void Student::printDegree() 
+{
+	cout << degree;
+}
+
+void Student::printStudent() 
+{
+	printFirstName();
+	cout << "\t";
+	printLastName();
+	cout << "\t";
+	printAge();
+	cout << "\t";
+	printDaysInCourse();
+	cout << "\t";
+	printDegree();
+	cout << endl;
 }

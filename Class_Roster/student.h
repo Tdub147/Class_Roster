@@ -39,7 +39,9 @@ class Student
 		void printLastName();
 		void printEmailAddress();
 		void printAge();
-		void printNumDaysToCompl();
+		void printDaysInCourse();
+		void printDegree();
+		void printStudent();
 
 	private:
 		string studentID;

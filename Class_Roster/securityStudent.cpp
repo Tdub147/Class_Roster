@@ -4,23 +4,20 @@ SecurityStudent::SecurityStudent()
 {
 	Student _;
 	student = _;
+	this->student.setDegree(SECURITY);
 }
 
 SecurityStudent::~SecurityStudent()
 {
 	student.~Student();
-	degree = UNKNOWN;
 }
 
 SecurityStudent::SecurityStudent(Student student)
 {
 	this->student = student;
+	this->student.setDegree(SECURITY);
 }
 
-Degree SecurityStudent::getDegreeProgram()
-{
-	return degree;
-}
 
 Student SecurityStudent::getStudent() const
 {
@@ -30,4 +27,5 @@ Student SecurityStudent::getStudent() const
 void SecurityStudent::setStudent(Student student)
 {
 	this->student = student;
+	this->student.setDegree(SECURITY);
 }

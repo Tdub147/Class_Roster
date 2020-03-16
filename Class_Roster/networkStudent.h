@@ -12,10 +12,8 @@ public:
 	void setStudent(Student student);
 
 	Student getStudent() const;
-	Degree getDegreeProgram();
 
 private:
 	Student student;
-	Degree degree = NETWORKING;
 };
 #endif
