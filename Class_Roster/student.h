@@ -13,26 +13,33 @@ class Student
 		Student();
 		~Student();
 
-		Student(string studentID, string firstName, string lastName, string emailAddress, int age, int numDaysToCompl[NUM_CLASSES], Degree degree);
+		Student(string studentID, string firstName, string lastName, string emailAddress, string age, string days1, string days2, string days3);
 
 
-		void SetStudentID(string studentID);
-		void SetFirstName(string firstName);
-		void SetLastName(string lastName);
-		void SetEmailAddress(string emailAddress);
-		void SetAge(int age);
-		void SetAge(string age);
-		void SetNumDaysToCompl(int index, int days);
-		void SetDegree(Degree degree);
+		void setStudentID(string studentID);
+		void setFirstName(string firstName);
+		void setLastName(string lastName);
+		void setEmailAddress(string emailAddress);
+		void setAge(int age);
+		void setAge(string age);
+		void setNumDaysToCompl(int index, int days);
+		void setDegree(Degree degree);
 
 
-		string GetStudentID() const;
-		string GetFirstName() const;
-		string GetLastName() const;
-		string GetEmailAddress() const;
-		int GetAge() const;
-		const int* GetNumDaysToCompl() const;
-		Degree GetDegree() const;
+		string getStudentID() const;
+		string getFirstName() const;
+		string getLastName() const;
+		string getEmailAddress() const;
+		int getAge() const;
+		const int* getNumDaysToCompl() const;
+		Degree getDegreeProgram() const;
+
+		void printStudentID();
+		void printFirstName();
+		void printLastName();
+		void printEmailAddress();
+		void printAge();
+		void printNumDaysToCompl();
 
 	private:
 		string studentID;
@@ -40,7 +47,7 @@ class Student
 		string lastName;
 		string emailAddress;
 		int age;
-		int numDaysToCompl[NUM_CLASSES];
+		int numDaysToCompl[3];
 		Degree degree;
 	};
 

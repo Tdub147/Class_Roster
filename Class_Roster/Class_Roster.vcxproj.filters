@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Class_Roster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="networkStudent.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
@@ -31,7 +28,7 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="roster.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +48,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="roster.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 #include "student.h"
+#include <iostream>
 
 
 // default Constructor
@@ -16,7 +17,7 @@ Student::Student()
 	degree = UNKNOWN;
 }
 
-// Deconstructor
+// Destructor
 Student::~Student()
 {
 	studentID.clear();
@@ -32,41 +33,40 @@ Student::~Student()
 }
 
 
-Student::Student(string studentID, string firstName, string lastName, string emailAddress, int age, int numDaysToCompl[NUM_CLASSES], Degree degree)
+Student::Student(string studentID, string firstName, string lastName, string emailAddress, string age, string days1, string days2, string days3)
 {
 	this->studentID = studentID;
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->emailAddress = emailAddress;
-	this->age = age;
-	for (int i = 0; i < NUM_CLASSES; i++)
-	{
-		this->numDaysToCompl[i] = numDaysToCompl[i];
-	}
+	this->age = stoi(age);
+	this->numDaysToCompl[0] = stoi(days1);
+	this->numDaysToCompl[1] = stoi(days2);
+	this->numDaysToCompl[2] = stoi(days3);
 	this->degree = degree;
 }
 
-void Student::SetStudentID(string studentID) {
+void Student::setStudentID(string studentID) {
 	this->studentID = studentID;
 	return;
 }
 
-void Student::SetFirstName(string firstName) {
+void Student::setFirstName(string firstName) {
 	this->firstName = firstName;
 	return;
 }
 
-void Student::SetLastName(string lastName) {
+void Student::setLastName(string lastName) {
 	this->lastName = lastName;
 	return;
 }
 
-void Student::SetEmailAddress(string emailAddress) {
+void Student::setEmailAddress(string emailAddress) {
 	this->emailAddress = emailAddress;
 	return;
 }
 
-void Student::SetAge(string age) {
+void Student::setAge(string age) {
 	stringstream ageStream(age);
 	int _age = NULL;
 	ageStream >> _age;
@@ -74,54 +74,97 @@ void Student::SetAge(string age) {
 	return;
 }
 
-void Student::SetAge(int age) {
+void Student::setAge(int age) {
 	this->age = age;
 	return;
 }
 
-void Student::SetNumDaysToCompl(int index, int days)
+void Student::setNumDaysToCompl(int index, int days)
 {
 	this->numDaysToCompl[index] = days;
 	return;
 }
 
-void Student::SetDegree(Degree degree)
+void Student::setDegree(Degree degree)
 {
 	this->degree = degree;
 	return;
 }
 
-string Student::GetStudentID() const
+string Student::getStudentID() const
 {
 	return studentID;
 }
 
-string Student::GetFirstName() const
+string Student::getFirstName() const
 {
 	return firstName;
 }
 
-string Student::GetLastName() const
+string Student::getLastName() const
 {
 	return lastName;
 }
 
-string Student::GetEmailAddress() const
+string Student::getEmailAddress() const
 {
 	return emailAddress;
 }
 
-int Student::GetAge() const
+int Student::getAge() const
 {
 	return age;
 }
 
-const int* Student::GetNumDaysToCompl() const
+const int* Student::getNumDaysToCompl() const
 {
 	return numDaysToCompl;
 }
 
-Degree Student::GetDegree() const
+Degree Student::getDegreeProgram() const
 {
-	return degree;
+	return UNKNOWN;
+}
+
+void Student::printStudentID()
+{
+	cout << "student ID: " << studentID;
+	return;
+}
+
+void Student::printFirstName()
+{
+	cout << "First Name: " << firstName;
+	return;
+}
+
+void Student::printLastName()
+{
+	cout << "Last Name: " << lastName;
+	return;
+}
+
+void Student::printEmailAddress()
+{
+	cout << "Email Address: " << emailAddress;
+	return;
+}
+
+void Student::printAge()
+{
+	cout << "Age: " << age;
+	return;
+}
+
+void Student::printNumDaysToCompl()
+{
+	string s = "Number of Days to Complete Each Course: {";
+	for (int i = 0; i < NUM_CLASSES; i++)
+	{
+		s += numDaysToCompl[i] + ",";
+	}
+	s.resize(s.size() - 1);
+	s += "}";
+	cout << s;
+	return;
 }

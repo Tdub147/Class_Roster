@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Class_Roster.cpp" />
     <ClCompile Include="networkStudent.cpp" />
     <ClCompile Include="roster.cpp" />
     <ClCompile Include="securityStudent.cpp" />
