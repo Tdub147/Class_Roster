@@ -9,10 +9,11 @@ Roster::Roster()
 }
 Roster::~Roster()
 {
-    //for (int i = 0; i < sizeof(students); i++)
-    //{
-    //    students[i].~Student();
-    //}
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        classRosterArray[i] = nullptr;
+        delete classRosterArray[i];
+    }
 }
 
 void Roster::printAll()
@@ -23,14 +24,42 @@ void Roster::printAll()
         cout << j << "\t";
         classRosterArray[i]->printStudent();
     }
+    cout << endl;
 }
 void Roster::printInvalidEmails()
 {
-
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        string email = classRosterArray[i]->getEmailAddress();
+        if (email.find(" ") != string::npos)
+        {
+            cout << email << endl;
+        }
+        else if (email.find("@") == string::npos || email.find(".") == string::npos)
+        {
+            cout << email << endl;
+        }
+    }
+    cout << endl;
 }
 void Roster::printAverageDaysInCourse(string studentID)
 {
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        if (classRosterArray[i]->getStudentID() == studentID)
+        {
+            int days[3];
+            memcpy(days, classRosterArray[i]->getNumDaysToCompl(), sizeof(days));
+            double ave = 0;
+            for (int j = 0; j < 3; j++)
+            {
+                ave += days[j];
+            }
+            ave = ave / 3.0;
+            cout << setprecision(3) <<"Average days in course for studentID: '" << studentID << "' = " << ave << endl << endl;
 
+        }
+    }
 }
 void Roster::printByDegreeProgram(Degree degree)
 {
@@ -38,13 +67,6 @@ void Roster::printByDegreeProgram(Degree degree)
 }
 void Roster::add(Student *student)
 {
-    /*int i = 0;
-    while (classRosterArray[i].getStudentID()!="")
-    {
-        i++;
-    }
-    classRosterArray[i] = student;*/
-
     int i = 0;
     while(classRosterArray[i] != NULL)
     {
@@ -58,7 +80,22 @@ void Roster::remove(Student student)
 }
 void Roster::remove(string studentID)
 {
-
+    bool found = false;
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        bool empty = classRosterArray[i] == NULL;
+        if (classRosterArray[i] != NULL && classRosterArray[i]->getStudentID() == studentID)
+        {
+            classRosterArray[i] = nullptr;
+            delete classRosterArray[i];
+            found = true;
+            cout << "Student with studentID: '" << studentID << "' was removed from the class roster array." << endl << endl;
+        }
+    }
+    if (!found)
+    {
+        cout << "A student with studentID: '" << studentID << "' was not found." << endl << endl;
+    }
 }
 
 int main()
@@ -121,12 +158,17 @@ int main()
         }
     }
 
-    cout << "Couse Title: Scripting and Programming - Applications – C867" << endl;
+    cout << "Couse Title: Scripting and Programming - Applications - C867" << endl;
     cout << "Programming Language: C++" << endl;
     cout << "Student ID: 001284276" << endl;
     cout << "Name: Tyler Williams" << endl << endl;
 
     classRoster.printAll();
+    classRoster.printInvalidEmails();
+    classRoster.printAverageDaysInCourse("A5");
+    classRoster.remove("A3");
+    classRoster.remove("A3");
+    classRoster.~Roster();
 
 }
 

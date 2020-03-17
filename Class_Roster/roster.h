@@ -1,16 +1,17 @@
 #ifndef ROSTER_H
 #define ROSTER_H
+using namespace std;
+
 #include <iostream>
 #include <string>
 #include <array>
+#include <iomanip>;
 #include "roster.h"
 #include "student.h"
 #include "securityStudent.h"
 #include "softwareStudent.h"
 #include "networkStudent.h"
 #include "degree.h"
-
-using namespace std;
 
 class Roster
 {

@@ -1,11 +1,11 @@
 #ifndef STUDENT_H
 #define STUDENT_H
+using namespace std;
 #include <string>
 #include <array>
 #include <sstream>
 #include "degree.h"
 
-using namespace std;
 const int NUM_CLASSES = 3;
 class Student
 {

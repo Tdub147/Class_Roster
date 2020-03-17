@@ -1,7 +1,7 @@
 #ifndef SECURITYSTUDENT_H
 #define SECURITYSTUDENT_H
-#include "student.h"
 using namespace std;
+#include "student.h"
 class SecurityStudent : public Student
 {
 public:
