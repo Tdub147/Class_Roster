@@ -63,7 +63,36 @@ void Roster::printAverageDaysInCourse(string studentID)
 }
 void Roster::printByDegreeProgram(Degree degree)
 {
-
+    string d = "UNKNOWN";
+    switch (degree)
+    {
+    case NETWORK:
+        d = "NETWORK";
+        break;
+    case SECURITY:
+        d = "SECURITY";
+        break;
+    case SOFTWARE:
+        d = "SOFTWARE";
+        break;
+    default:
+        break;
+    }
+    cout << "All students in the '" << d << "' degree program:" << endl;
+    bool atLeastOne = false;
+    for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
+    {
+        if (classRosterArray[i]->getDegreeProgram() == degree)
+        {
+            atLeastOne = true;
+            classRosterArray[i]->printStudent();
+        }
+    }
+    if (!atLeastOne)
+    {
+        cout<< "No students in the " << d << "' degree program";
+    }
+    cout << endl;
 }
 void Roster::add(Student *student)
 {
@@ -74,10 +103,7 @@ void Roster::add(Student *student)
     }
     classRosterArray[i] = student;
 }
-void Roster::remove(Student student)
-{
 
-}
 void Roster::remove(string studentID)
 {
     bool found = false;
@@ -166,6 +192,7 @@ int main()
     classRoster.printAll();
     classRoster.printInvalidEmails();
     classRoster.printAverageDaysInCourse("A5");
+    classRoster.printByDegreeProgram(SOFTWARE);
     classRoster.remove("A3");
     classRoster.remove("A3");
     classRoster.~Roster();

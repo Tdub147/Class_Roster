@@ -24,7 +24,6 @@ public:
 	void printAverageDaysInCourse(string studentID);
 	void printByDegreeProgram(Degree degree);
 	void add(Student *student);
-	void remove(Student student);
 	void remove(string studentID);
 	
 private:
