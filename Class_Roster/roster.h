@@ -1,7 +1,5 @@
 #ifndef ROSTER_H
 #define ROSTER_H
-using namespace std;
-
 #include <iostream>
 #include <string>
 #include <array>
@@ -11,6 +9,8 @@ using namespace std;
 #include "softwareStudent.h"
 #include "networkStudent.h"
 #include "degree.h"
+
+using namespace std;
 
 class Roster
 {
@@ -22,11 +22,11 @@ public:
 	void printInvalidEmails();
 	void printAverageDaysInCourse(string studentID);
 	void printByDegreeProgram(Degree degree);
-	void add(Student student);
+	void add(Student *student);
 	void remove(Student student);
 	void remove(string studentID);
 	
 private:
-	Student classRosterArray[5];
+	Student* classRosterArray[5] = { nullptr };
 };
 #endif

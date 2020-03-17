@@ -17,12 +17,11 @@ Roster::~Roster()
 
 void Roster::printAll()
 {
-    // Call the student data as *variable
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
     {
         int j = i + 1;
         cout << j << "\t";
-        classRosterArray[i].printStudent();
+        classRosterArray[i]->printStudent();
     }
 }
 void Roster::printInvalidEmails()
@@ -37,10 +36,17 @@ void Roster::printByDegreeProgram(Degree degree)
 {
 
 }
-void Roster::add(Student student)
+void Roster::add(Student *student)
 {
-    int i = 0;
+    /*int i = 0;
     while (classRosterArray[i].getStudentID()!="")
+    {
+        i++;
+    }
+    classRosterArray[i] = student;*/
+
+    int i = 0;
+    while(classRosterArray[i] != NULL)
     {
         i++;
     }
@@ -85,20 +91,29 @@ int main()
         {
         case NETWORK:
         {
-            NetworkStudent networkStudent{ student };
-            classRoster.add(networkStudent.getStudent());
+            /*NetworkStudent networkStudent{ student };
+            classRoster.add(networkStudent.getStudent());*/
+            NetworkStudent* ns = new NetworkStudent (student);
+            Student* student = new Student(ns->getStudent());
+            classRoster.add(student);
             break;
         }
         case SECURITY:
         {
-            SecurityStudent securityStudent{ student };
-            classRoster.add(securityStudent.getStudent());
+            /*SecurityStudent securityStudent{ student };
+            classRoster.add(securityStudent.getStudent());*/
+            SecurityStudent* secS = new SecurityStudent(student);
+            Student* student = new Student(secS->getStudent());
+            classRoster.add(student);
             break;
         }
         case SOFTWARE:
         {
-            SoftwareStudent softwareStudent{ student };
-            classRoster.add(softwareStudent.getStudent());
+            /*SoftwareStudent softwareStudent{ student };
+            classRoster.add(softwareStudent.getStudent());*/
+            SoftwareStudent* sofS = new SoftwareStudent(student);
+            Student* student = new Student(sofS->getStudent());
+            classRoster.add(student);
             break;
         }
         default:
