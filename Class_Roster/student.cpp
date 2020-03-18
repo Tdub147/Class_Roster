@@ -175,6 +175,7 @@ void Student::printDegree()
 	cout << s;
 }
 
+// Prints fisrt name, last name, age, days in course, and degree program of student
 void Student::printStudent() 
 {
 	printFirstName();

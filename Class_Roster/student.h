@@ -50,7 +50,7 @@ class Student
 		string emailAddress;
 		int age;
 		int numDaysToCompl[3];
-		Degree degree;
+		Degree degree = UNKNOWN;
 	};
 
 #endif

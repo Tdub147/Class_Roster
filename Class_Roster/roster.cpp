@@ -4,9 +4,11 @@
 
 using namespace std;
 
+// Default constructor
 Roster::Roster()
 {
 }
+// Destructor
 Roster::~Roster()
 {
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
@@ -16,6 +18,7 @@ Roster::~Roster()
     }
 }
 
+// Prints first name, last name, age, days in courses, and degree program for all students in classRosterArray
 void Roster::printAll()
 {
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
@@ -26,6 +29,8 @@ void Roster::printAll()
     }
     cout << endl;
 }
+
+// Prints invalid emails. Contains whitespace, does not have '@', or does not have '.'
 void Roster::printInvalidEmails()
 {
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
@@ -42,6 +47,8 @@ void Roster::printInvalidEmails()
     }
     cout << endl;
 }
+
+// Prints the average of the days in course for a student of studentID
 void Roster::printAverageDaysInCourse(string studentID)
 {
     for (int i = 0; i < sizeof(classRosterArray) / sizeof(classRosterArray[0]); i++)
@@ -61,6 +68,8 @@ void Roster::printAverageDaysInCourse(string studentID)
         }
     }
 }
+
+// Prints first name, last name, age, days in courses, and degree for all students in classRosterArray of supplied degree program
 void Roster::printByDegreeProgram(Degree degree)
 {
     string d = "UNKNOWN";
@@ -86,6 +95,7 @@ void Roster::printByDegreeProgram(Degree degree)
         {
             atLeastOne = true;
             classRosterArray[i]->printStudent();
+            cout << endl;
         }
     }
     if (!atLeastOne)
@@ -94,6 +104,8 @@ void Roster::printByDegreeProgram(Degree degree)
     }
     cout << endl;
 }
+
+// Adds student to classRosterArray
 void Roster::add(Student *student)
 {
     int i = 0;
@@ -104,6 +116,7 @@ void Roster::add(Student *student)
     classRosterArray[i] = student;
 }
 
+// Removes student from classRosterArray by studentID
 void Roster::remove(string studentID)
 {
     bool found = false;
@@ -124,15 +137,26 @@ void Roster::remove(string studentID)
     }
 }
 
+// Main point of entry
 int main()
 {
+    // Change console size to read the outputs --------------------- //
+    HWND consoleHandle = GetConsoleWindow();
+    RECT rect;
+    GetWindowRect(consoleHandle, &rect);
+    MoveWindow(consoleHandle, rect.left, rect.top, 1300, 600, true);
+    // ------------------------------------------------------------- //
 
+    // Initial data set.
     const string studentData[] =
     { "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
     "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
     "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
     "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
     "A5,Tyler,Williams,twi1506@wgu.edu,28,8,30,60,SOFTWARE" };
+
+
+
     const size_t NUM_OF_STUDENTS = sizeof(studentData)/sizeof(studentData[0]);
     Roster classRoster;
 
@@ -154,28 +178,22 @@ int main()
         {
         case NETWORK:
         {
-            /*NetworkStudent networkStudent{ student };
-            classRoster.add(networkStudent.getStudent());*/
-            NetworkStudent* ns = new NetworkStudent (student);
-            Student* student = new Student(ns->getStudent());
+            NetworkStudent ns =  NetworkStudent(student);
+            Student* student = new Student(ns.getStudent());
             classRoster.add(student);
             break;
         }
         case SECURITY:
         {
-            /*SecurityStudent securityStudent{ student };
-            classRoster.add(securityStudent.getStudent());*/
-            SecurityStudent* secS = new SecurityStudent(student);
-            Student* student = new Student(secS->getStudent());
+            SecurityStudent secS = SecurityStudent(student);
+            Student* student = new Student(secS.getStudent());
             classRoster.add(student);
             break;
         }
         case SOFTWARE:
         {
-            /*SoftwareStudent softwareStudent{ student };
-            classRoster.add(softwareStudent.getStudent());*/
-            SoftwareStudent* sofS = new SoftwareStudent(student);
-            Student* student = new Student(sofS->getStudent());
+            SoftwareStudent sofS = SoftwareStudent(student);
+            Student* student = new Student(sofS.getStudent());
             classRoster.add(student);
             break;
         }
@@ -197,15 +215,6 @@ int main()
     classRoster.remove("A3");
     classRoster.~Roster();
 
+    
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

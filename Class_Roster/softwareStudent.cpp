@@ -12,6 +12,7 @@ SoftwareStudent::~SoftwareStudent()
 	student.~Student();
 }
 
+// Takes a student and sets the degree
 SoftwareStudent::SoftwareStudent(Student student)
 {
 	this->student = student;

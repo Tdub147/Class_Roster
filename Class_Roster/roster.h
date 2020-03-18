@@ -5,7 +5,8 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <array>
-#include <iomanip>;
+#include <iomanip>
+#include <windows.h>
 #include "roster.h"
 #include "student.h"
 #include "securityStudent.h"
